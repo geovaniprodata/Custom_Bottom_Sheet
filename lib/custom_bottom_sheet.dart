@@ -8,11 +8,13 @@ class SlideDialog extends StatefulWidget {
   final Widget child;
   final Color? backgroundColor;
   final Color pillColor;
+  final double? choosedHeight;
 
   SlideDialog({
     required this.child,
     required this.pillColor,
     required this.backgroundColor,
+    this.choosedHeight,
   });
 
   static showSlideDialog<T>({
@@ -64,8 +66,7 @@ class _SlideDialogState extends State<SlideDialog> {
     final deviceHeight = MediaQuery.of(context).size.height;
 
     return AnimatedPadding(
-      padding: MediaQuery.of(context).viewInsets +
-          EdgeInsets.only(top: deviceHeight / 3.0 + _currentPosition),
+      padding: MediaQuery.of(context).viewInsets + EdgeInsets.only(top: deviceHeight / 3.0 + _currentPosition),
       duration: Duration(milliseconds: 100),
       curve: Curves.decelerate,
       child: MediaQuery.removeViewInsets(
@@ -77,10 +78,9 @@ class _SlideDialogState extends State<SlideDialog> {
         child: Center(
           child: Container(
             width: deviceWidth,
-            height: deviceHeight / 1.5,
+            height: widget.choosedHeight ?? deviceHeight / 1.5,
             child: Material(
-              color: widget.backgroundColor ??
-                  Theme.of(context).dialogBackgroundColor,
+              color: widget.backgroundColor ?? Theme.of(context).dialogBackgroundColor,
               elevation: 24.0,
               type: MaterialType.card,
               child: Column(
