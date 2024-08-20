@@ -25,6 +25,7 @@ class SlideDialog extends StatefulWidget {
     Duration transitionDuration = const Duration(milliseconds: 300),
     Color? pillColor,
     Color? backgroundColor,
+    double? choosedHeight,
   }) {
     return showGeneralDialog(
       context: context,
@@ -45,6 +46,7 @@ class SlideDialog extends StatefulWidget {
               child: child,
               pillColor: pillColor ?? Colors.white,
               backgroundColor: backgroundColor ?? Colors.black,
+              choosedHeight: choosedHeight,
             ),
           ),
         );
