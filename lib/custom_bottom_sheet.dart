@@ -68,7 +68,7 @@ class _SlideDialogState extends State<SlideDialog> {
     final deviceHeight = MediaQuery.of(context).size.height;
 
     return AnimatedPadding(
-      padding: MediaQuery.of(context).viewInsets + EdgeInsets.only(top: deviceHeight / 3.0 + _currentPosition),
+      padding: MediaQuery.of(context).viewInsets + EdgeInsets.only(top: (widget.choosedHeight ?? deviceHeight) / 3.0 + _currentPosition),
       duration: Duration(milliseconds: 100),
       curve: Curves.decelerate,
       child: MediaQuery.removeViewInsets(
